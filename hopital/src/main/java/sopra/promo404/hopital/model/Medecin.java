@@ -2,8 +2,14 @@ package sopra.promo404.hopital.model;
 
 import java.util.ArrayList;
 
+import javax.persistence.Column;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Version;
 
 public class Medecin {
@@ -12,21 +18,23 @@ public class Medecin {
 	private Long id;
 	@Version
 	private int version;
-	
+	@Column
 	private String nom;
-	
+	@Column
 	private String prenom;
-	
+	@Enumerated
+	@Column
 	private Convention conventionne;
-	
+	@Column
 	private boolean carteVitale;
-	
+	@Column
 	private boolean cmu;
-	
+	@OneToOne
+	@JoinColumn(name = "salle_id")
 	private Salle salle;
-	
+	@OneToMany(mappedBy= "medecin", fetch=FetchType.EAGER)
 	private FileAttente fileattente;
-	
+	@OneToMany(mappedBy= "medecin", fetch=FetchType.EAGER)
 	private ArrayList<Specialite> specialites;
 
 	public int getVersion() {

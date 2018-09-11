@@ -1,7 +1,12 @@
 package sopra.promo404.hopital.model;
 
+import javax.persistence.Column;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Version;
 
 public class Salle {
@@ -10,6 +15,13 @@ public class Salle {
 	private Long id;
 	@Version
 	private int version;
+	@Column
+	private String nom;
+	@OneToMany(mappedBy= "salle", fetch=FetchType.EAGER)
+	private Consultation consultation;
+	@OneToOne
+	@JoinColumn(name = "medecin_id")
+	private Medecin medecin;
 
 	public int getVersion() {
 		return version;
@@ -27,7 +39,7 @@ public class Salle {
 		this.id = id;
 	}
 	
-	private String nom;
+	
 
 	public String getNom() {
 		return nom;
@@ -37,9 +49,7 @@ public class Salle {
 		this.nom = nom;
 	}
 	
-	private Consultation consultation;
 	
-	private Medecin medecin;
 
 	public Consultation getConsultation() {
 		return consultation;
