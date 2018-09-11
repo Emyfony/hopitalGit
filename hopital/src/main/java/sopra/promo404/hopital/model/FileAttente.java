@@ -1,4 +1,4 @@
-package hopital.classes;
+package sopra.promo404.hopital.model;
 
 import java.util.ArrayList;
 
@@ -34,7 +34,7 @@ public class FileAttente {
 	
 	public void print() {
 		for (int i = 1 ; i <= this.patients.size() ; i++) {
-			System.out.println(i + " : " + this.patients.get(i-1).getNom() + ", désire voir un " + this.patients.get(i-1).getSpecialite());
+			System.out.println(i + " : " + this.patients.get(i-1).getNom() + ", dï¿½sire voir un " + this.patients.get(i-1).getSpecialite());
 		}
 		
 	}

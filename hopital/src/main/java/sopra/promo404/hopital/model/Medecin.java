@@ -1,4 +1,4 @@
-package hopital.classes;
+package sopra.promo404.hopital.model;
 
 import java.util.ArrayList;
 
