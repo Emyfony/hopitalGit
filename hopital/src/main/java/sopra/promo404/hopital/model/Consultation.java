@@ -38,6 +38,12 @@ public class Consultation {
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name = "patient_id")
 	private Patient patient;
+	
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name = "salle_id")
+	private Salle salle;
+	
+	
 
 	
 
