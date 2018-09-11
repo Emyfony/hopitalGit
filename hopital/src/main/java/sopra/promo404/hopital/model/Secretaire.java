@@ -1,6 +1,6 @@
 package sopra.promo404.hopital.model;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -29,7 +29,7 @@ public class Secretaire {
 	private boolean enPause;
 	@Column
 	@OneToMany(mappedBy = "secretaire", fetch=FetchType.LAZY)
-	private List<FileAttente> fileAttentes = new ArrayList<>();
+	private List<FileAttente> fileAttentes;
 
 	public Secretaire() {
 		super();

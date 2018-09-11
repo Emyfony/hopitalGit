@@ -1,6 +1,6 @@
 package sopra.promo404.hopital.model;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -35,7 +35,7 @@ public class Patient {
 	private Civilite civilite;
 	
 	@OneToMany(mappedBy = "patient", fetch=FetchType.LAZY)
-	private List<Consultation> consultations = new ArrayList<>();
+	private List<Consultation> consultations;
 	
 	//Constructeur
 	public Patient() {
@@ -125,8 +125,6 @@ public class Patient {
 	public void setConsultations(List<Consultation> consultations) {
 		this.consultations = consultations;
 	}
-	
-
 	
 
 }

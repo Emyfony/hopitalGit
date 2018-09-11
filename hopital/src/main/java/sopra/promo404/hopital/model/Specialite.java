@@ -1,6 +1,6 @@
 package sopra.promo404.hopital.model;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.FetchType;
@@ -23,7 +23,7 @@ public class Specialite {
 	@Column
 	private Float tarif;
 	@OneToMany(mappedBy= "specialite", fetch=FetchType.EAGER)
-	private ArrayList<Consultation> consultations;
+	private List<Consultation> consultations;
 	@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="medecin_id")
 	private Medecin medecin;
@@ -59,11 +59,11 @@ public class Specialite {
 		this.tarif = tarif;
 	}
 
-	public ArrayList<Consultation> getConsultations() {
+	public List<Consultation> getConsultations() {
 		return consultations;
 	}
 
-	public void setConsultations(ArrayList<Consultation> consultations) {
+	public void setConsultations(List<Consultation> consultations) {
 		this.consultations = consultations;
 	}
 

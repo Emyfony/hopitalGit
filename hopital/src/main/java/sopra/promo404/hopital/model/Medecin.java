@@ -1,6 +1,6 @@
 package sopra.promo404.hopital.model;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 
@@ -35,9 +35,9 @@ public class Medecin {
 	@JoinColumn(name = "salle_id")
 	private Salle salle;
 	@OneToMany(mappedBy= "medecin", fetch=FetchType.EAGER)
-	private ArrayList<FileAttente> fileAttentes;
+	private List<FileAttente> fileAttentes;
 	@OneToMany(mappedBy= "medecin", fetch=FetchType.EAGER)
-	private ArrayList<Specialite> specialites;
+	private List<Specialite> specialites;
 
 	public int getVersion() {
 		return version;
@@ -84,19 +84,19 @@ public class Medecin {
 	
 
 	
-	public ArrayList<Specialite> getSpecialites() {
+	public List<Specialite> getSpecialites() {
 		return specialites;
 	}
 
-	public void setSpecialites(ArrayList<Specialite> specialites) {
+	public void setSpecialites(List<Specialite> specialites) {
 		this.specialites = specialites;
 	}
 
-	public ArrayList<FileAttente> getFileattente() {
+	public List<FileAttente> getFileattente() {
 		return fileAttentes;
 	}
 
-	public void setFileattente(ArrayList<FileAttente> fileAttentes) {
+	public void setFileattente(List<FileAttente> fileAttentes) {
 		this.fileAttentes = fileAttentes;
 	}
 

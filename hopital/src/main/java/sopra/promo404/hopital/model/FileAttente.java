@@ -2,7 +2,6 @@ package sopra.promo404.hopital.model;
 
 
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -33,7 +32,7 @@ public class FileAttente {
 	private Medecin medecin;
 	
 	@OneToMany(mappedBy = "FileAttente", fetch=FetchType.EAGER)
-	private List<Patient> patients = new ArrayList<>();
+	private List<Patient> patients;
 	
 	
 	public FileAttente() {
