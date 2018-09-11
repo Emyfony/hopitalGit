@@ -1,7 +1,23 @@
 package sopra.promo404.hopital.model;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Version;
+
 public class Salle {
+	@Id
+	@GeneratedValue
 	private Long id;
+	@Version
+	private int version;
+
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
+	}
 
 	public Long getId() {
 		return id;
@@ -21,16 +37,16 @@ public class Salle {
 		this.nom = nom;
 	}
 	
-	private Patient patient;
+	private Consultation consultation;
 	
 	private Medecin medecin;
 
-	public Patient getPatient() {
-		return patient;
+	public Consultation getConsultation() {
+		return consultation;
 	}
 
-	public void setPatient(Patient patient) {
-		this.patient = patient;
+	public void setConsultation(Consultation consultation) {
+		this.consultation = consultation;
 	}
 
 	public Medecin getMedecin() {

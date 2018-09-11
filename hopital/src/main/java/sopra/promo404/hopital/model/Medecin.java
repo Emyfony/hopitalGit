@@ -2,8 +2,26 @@ package sopra.promo404.hopital.model;
 
 import java.util.ArrayList;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Version;
+
 public class Medecin {
+	@Id
+	@GeneratedValue
 	private Long id;
+	@Version
+	private int version;
+
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
+	}
+
+	
 
 	public Long getId() {
 		return id;
@@ -25,72 +43,43 @@ public class Medecin {
 
 	private Salle salle;
 	
-	private ArrayList<String> specialites;
+	private FileAttente fileattente;
 	
-	private ArrayList<Visite> visites;
+	private ArrayList<Specialite> specialites;
 	
-	private Hopital hopital;
+	
 
 	public Salle getSalle() {
 		return salle;
 	}
 
-	public void setSalle(Salle salle,Hopital hopital) {
+	public void setSalle(Salle salle) {
 		this.salle = salle;
-		salle.setMedecin(this);
-		hopital.getMedecins().add(this);
-		this.hopital = hopital;
 	}
 	
-	public void finished() {
-		this.hopital.getMedecins().remove(this);
-	}
 	
-	public void archive() {
-		this.hopital.getTablevisites().addToArchives(this.visites);
-		this.visites = new ArrayList<>();
-	}
 	
-	public void next() {
-		Visite v = new Visite(this,this.salle.getPatient(),this.salle.getPatient().getSpecialite());
-		this.visites.add(v);
-		if (this.visites.size() == 10) {
-			this.archive();
-		}
-		
-		this.salle.setPatient(hopital.getFileencours().getPatients().get(0));
-	}
+	
 
-	public ArrayList<String> getSpecialites() {
+	
+	public ArrayList<Specialite> getSpecialites() {
 		return specialites;
 	}
 
-	public void setSpecialites(ArrayList<String> specialites) {
+	public void setSpecialites(ArrayList<Specialite> specialites) {
 		this.specialites = specialites;
 	}
 
-	public ArrayList<Visite> getVisites() {
-		return visites;
+	public FileAttente getFileattente() {
+		return fileattente;
 	}
 
-	public void setVisites(ArrayList<Visite> visites) {
-		this.visites = visites;
+	public void setFileattente(FileAttente fileattente) {
+		this.fileattente = fileattente;
 	}
 	
-	public void fileState() {
-		System.out.println("Il y a " + hopital.getFileencours().getPatients().size() + "patients en attente");
-		for (int i = 0; i < hopital.getMedecins().size();i++) {
-			System.out.println("Le prochain patient du docteur " + hopital.getMedecins().get(i).getNom() + " est " + hopital.getFileencours().getPatients().get(0));
-		}
-	}
-
-	public Hopital getHopital() {
-		return hopital;
-	}
-
-	public void setHopital(Hopital hopital) {
-		this.hopital = hopital;
-	}
+	
+	
 	
 	
 	
