@@ -46,6 +46,14 @@ public class Specialite {
 	public void setTarif(Float tarif) {
 		this.tarif = tarif;
 	}
+
+	public ArrayList<Consultation> getConsultations() {
+		return consultations;
+	}
+
+	public void setConsultations(ArrayList<Consultation> consultations) {
+		this.consultations = consultations;
+	}
 	
 	
 }

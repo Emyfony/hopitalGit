@@ -12,6 +12,22 @@ public class Medecin {
 	private Long id;
 	@Version
 	private int version;
+	
+	private String nom;
+	
+	private String prenom;
+	
+	private Convention conventionne;
+	
+	private boolean carteVitale;
+	
+	private boolean cmu;
+	
+	private Salle salle;
+	
+	private FileAttente fileattente;
+	
+	private ArrayList<Specialite> specialites;
 
 	public int getVersion() {
 		return version;
@@ -31,7 +47,7 @@ public class Medecin {
 		this.id = id;
 	}
 	
-	private String nom;
+	
 	
 	public String getNom() {
 		return nom;
@@ -41,11 +57,7 @@ public class Medecin {
 		this.nom = nom;
 	}
 
-	private Salle salle;
 	
-	private FileAttente fileattente;
-	
-	private ArrayList<Specialite> specialites;
 	
 	
 
@@ -76,6 +88,38 @@ public class Medecin {
 
 	public void setFileattente(FileAttente fileattente) {
 		this.fileattente = fileattente;
+	}
+
+	public String getPrenom() {
+		return prenom;
+	}
+
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+
+	public Convention getConventionne() {
+		return conventionne;
+	}
+
+	public void setConventionne(Convention conventionne) {
+		this.conventionne = conventionne;
+	}
+
+	public boolean isCarteVitale() {
+		return carteVitale;
+	}
+
+	public void setCarteVitale(boolean carteVitale) {
+		this.carteVitale = carteVitale;
+	}
+
+	public boolean isCmu() {
+		return cmu;
+	}
+
+	public void setCmu(boolean cmu) {
+		this.cmu = cmu;
 	}
 	
 	
