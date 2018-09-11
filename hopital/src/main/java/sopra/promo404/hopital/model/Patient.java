@@ -1,7 +1,6 @@
 package sopra.promo404.hopital.model;
 
 import java.util.List;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,26 +13,34 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 public class Patient {
 	@Id
 	@GeneratedValue
+	@JsonView(Views.ViewCommon.class)
 	private Long id;
 	
 	@Version
+	@JsonView(Views.ViewCommon.class)
 	private int version;
 
 	@Column
+	@JsonView(Views.ViewCommon.class)
 	private String nom;
 	
 	@Column
+	@JsonView(Views.ViewCommon.class)
 	private String prenom;
 
 	@Column
+	@JsonView(Views.ViewCommon.class)
 	private String numSecuriteSocial;
 	
 	@Enumerated
 	@Column(name = "civility", length = 10)
+	@JsonView(Views.ViewCommon.class)
 	private Civilite civilite;
 	
 	@OneToMany(mappedBy = "patient", fetch=FetchType.LAZY)
