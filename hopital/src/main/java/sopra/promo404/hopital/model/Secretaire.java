@@ -1,7 +1,7 @@
 package sopra.promo404.hopital.model;
 
 import java.util.List;
-import java.util.List;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
