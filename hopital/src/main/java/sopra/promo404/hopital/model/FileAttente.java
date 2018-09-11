@@ -24,7 +24,9 @@ public class FileAttente {
 	@JoinColumn(name="secretaire_id")
 	private Secretaire secretaire;
 	
-	
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="medecin_id")
+	private Medecin medecin;
 	
 	public FileAttente() {
 		super();
@@ -32,11 +34,41 @@ public class FileAttente {
 	
 	
 	
-	public FileAttente(Long id, int version, int capacite) {
+	public FileAttente(Long id, int version, int capacite, Secretaire secretaire, Medecin medecin) {
 		super();
 		this.id = id;
 		this.version = version;
 		this.capacite = capacite;
+		this.secretaire = secretaire;
+		this.medecin = medecin;
+	}
+
+
+
+
+
+
+
+	public Secretaire getSecretaire() {
+		return secretaire;
+	}
+
+
+
+	public void setSecretaire(Secretaire secretaire) {
+		this.secretaire = secretaire;
+	}
+
+
+
+	public Medecin getMedecin() {
+		return medecin;
+	}
+
+
+
+	public void setMedecin(Medecin medecin) {
+		this.medecin = medecin;
 	}
 
 

@@ -35,17 +35,46 @@ public class Secretaire {
 		super();
 	}
 
-	public Secretaire(Long id, String nom, String prenom, Civilite civilite, boolean enPause) {
+
+	public Secretaire(Long id, int version, String nom, String prenom, Civilite civilite, boolean enPause,
+			List<FileAttente> fileAttentes) {
 		super();
 		this.id = id;
+		this.version = version;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.civilite = civilite;
 		this.enPause = enPause;
+		this.fileAttentes = fileAttentes;
 	}
+
 
 	public Long getId() {
 		return id;
+	}
+
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
+	}
+
+	public Civilite getCivilite() {
+		return civilite;
+	}
+
+	public void setCivilite(Civilite civilite) {
+		this.civilite = civilite;
+	}
+
+	public List<FileAttente> getFileAttentes() {
+		return fileAttentes;
+	}
+
+	public void setFileAttentes(List<FileAttente> fileAttentes) {
+		this.fileAttentes = fileAttentes;
 	}
 
 	public Long setId(Long id) {
