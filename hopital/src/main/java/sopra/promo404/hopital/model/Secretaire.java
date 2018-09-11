@@ -28,7 +28,7 @@ public class Secretaire {
 	@Column
 	private boolean enPause;
 	@Column
-	@OneToMany(mappedBy = "Secretaire", fetch=FetchType.LAZY)
+	@OneToMany(mappedBy = "secretaire", fetch=FetchType.LAZY)
 	private List<FileAttente> fileAttentes = new ArrayList<>();
 
 	public Secretaire() {

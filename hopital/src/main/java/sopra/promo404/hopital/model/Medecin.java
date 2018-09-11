@@ -33,7 +33,7 @@ public class Medecin {
 	@JoinColumn(name = "salle_id")
 	private Salle salle;
 	@OneToMany(mappedBy= "medecin", fetch=FetchType.EAGER)
-	private FileAttente fileattente;
+	private ArrayList<FileAttente> fileAttentes;
 	@OneToMany(mappedBy= "medecin", fetch=FetchType.EAGER)
 	private ArrayList<Specialite> specialites;
 
@@ -90,12 +90,12 @@ public class Medecin {
 		this.specialites = specialites;
 	}
 
-	public FileAttente getFileattente() {
-		return fileattente;
+	public ArrayList<FileAttente> getFileattente() {
+		return fileAttentes;
 	}
 
-	public void setFileattente(FileAttente fileattente) {
-		this.fileattente = fileattente;
+	public void setFileattente(ArrayList<FileAttente> fileAttentes) {
+		this.fileAttentes = fileAttentes;
 	}
 
 	public String getPrenom() {
