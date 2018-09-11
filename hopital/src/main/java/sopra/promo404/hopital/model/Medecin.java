@@ -3,6 +3,7 @@ package sopra.promo404.hopital.model;
 import java.util.ArrayList;
 
 import javax.persistence.Column;
+
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -11,7 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Version;
-
+import javax.persistence.Entity;
+@Entity
 public class Medecin {
 	@Id
 	@GeneratedValue

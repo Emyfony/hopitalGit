@@ -10,7 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Version;
-
+import javax.persistence.Entity;
+@Entity
 public class Specialite {
 	@Id
 	@GeneratedValue
