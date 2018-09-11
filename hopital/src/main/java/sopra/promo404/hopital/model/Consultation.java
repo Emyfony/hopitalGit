@@ -36,7 +36,7 @@ public class Consultation {
 	private Date dtVisiteFin;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn
+	@JoinColumn(name = "patient_id")
 	private Patient patient;
 
 	
