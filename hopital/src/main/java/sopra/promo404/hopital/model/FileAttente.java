@@ -2,6 +2,9 @@ package sopra.promo404.hopital.model;
 
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Version;
 @Entity
 public class FileAttente {
@@ -28,23 +32,45 @@ public class FileAttente {
 	@JoinColumn(name="medecin_id")
 	private Medecin medecin;
 	
+	@OneToMany(mappedBy = "FileAttente", fetch=FetchType.EAGER)
+	private List<Patient> patients = new ArrayList<>();
+	
+	
 	public FileAttente() {
 		super();
 	}
 	
 	
-	
-	public FileAttente(Long id, int version, int capacite, Secretaire secretaire, Medecin medecin) {
+		
+
+	public FileAttente(Long id, int version, int capacite, Secretaire secretaire, Medecin medecin,
+			List<Patient> patients) {
 		super();
 		this.id = id;
 		this.version = version;
 		this.capacite = capacite;
 		this.secretaire = secretaire;
 		this.medecin = medecin;
+		this.patients = patients;
 	}
 
 
 
+
+
+
+
+
+
+	public List<Patient> getPatients() {
+		return patients;
+	}
+
+
+
+	public void setPatients(List<Patient> patients) {
+		this.patients = patients;
+	}
 
 
 
