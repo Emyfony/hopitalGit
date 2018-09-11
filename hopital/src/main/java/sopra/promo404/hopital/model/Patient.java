@@ -1,8 +1,38 @@
 package sopra.promo404.hopital.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Patient {
+	@Id
+	@GeneratedValue
 	private Long id;
 
+	private String nom;
+	
+	private String prenom;
+
+	private String numSecuriteSocial;
+	
+	private Civilite civilite;
+	
+	//Constructeur
+	public Patient() {
+		super();
+	}
+	
+	public Patient(Long id, String nom, String prenom, String numSecuriteSocial, Civilite civilite) {
+		super();
+		this.id = id;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.numSecuriteSocial = numSecuriteSocial;
+		this.civilite = civilite;
+	}
+
+	//Getter Setter
 	public Long getId() {
 		return id;
 	}
@@ -10,9 +40,7 @@ public class Patient {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
-	private String nom;
-	
+
 	public String getNom() {
 		return nom;
 	}
@@ -20,49 +48,32 @@ public class Patient {
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
-	
-	private String informations;
-	
-	private boolean inscrit;
 
-	public String getInformations() {
-		return informations;
+	public String getPrenom() {
+		return prenom;
 	}
 
-	public void setInformations(String informations) {
-		this.informations = informations;
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
 	}
 
-	public boolean isInscrit() {
-		return inscrit;
+	public String getNumSecuriteSocial() {
+		return numSecuriteSocial;
 	}
 
-	public void setInscrit(boolean inscrit) {
-		this.inscrit = inscrit;
-	}
-	
-	public String getSpecialite() {
-		return specialite;
+	public void setNumSecuriteSocial(String numSecuriteSocial) {
+		this.numSecuriteSocial = numSecuriteSocial;
 	}
 
-	public void setSpecialite(String specialite) {
-		this.specialite = specialite;
+	public Civilite getCivilite() {
+		return civilite;
 	}
 
-	public Patient(Long id, String nom, String informations, boolean inscrit, String specialite) {
-		super();
-		this.id = id;
-		this.nom = nom;
-		this.informations = informations;
-		this.inscrit = inscrit;
-		this.specialite = specialite;
-	}
-
-	private String specialite;
-	
-	public Patient() {
-		super();
-		this.inscrit = false;
+	public void setCivilite(Civilite civilite) {
+		this.civilite = civilite;
 	}
 	
+
+	
+
 }

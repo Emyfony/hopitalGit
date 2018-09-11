@@ -1,6 +1,6 @@
 package sopra.promo404.hopital.model;
 
-public class Visite {
+public class Consultation {
 	private Long id;
 
 	public Long getId() {
@@ -51,11 +51,11 @@ public class Visite {
 		this.tarif = tarif;
 	}
 
-	public Visite() {
+	public Consultation() {
 		super();
 	}
 	
-	public Visite(Medecin medecin, Patient patient, String specialite) {
+	public Consultation(Medecin medecin, Patient patient, String specialite) {
 		super();
 		this.medecin = medecin;
 		this.patient = patient;

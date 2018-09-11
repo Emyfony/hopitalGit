@@ -31,11 +31,6 @@ public class FileAttente {
 		super();
 		this.patients = new ArrayList<Patient>();
 	}
-	
-	public void print() {
-		for (int i = 1 ; i <= this.patients.size() ; i++) {
-			System.out.println(i + " : " + this.patients.get(i-1).getNom() + ", d�sire voir un " + this.patients.get(i-1).getSpecialite());
-		}
 		
-	}
+	
 }
