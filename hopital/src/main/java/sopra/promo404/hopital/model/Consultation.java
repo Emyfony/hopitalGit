@@ -1,65 +1,115 @@
 package sopra.promo404.hopital.model;
 
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Version;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+@Entity
 public class Consultation {
+	
+	@Id
+	@GeneratedValue
 	private Long id;
+
+	@Version
+	private int version;
+	
+	@Temporal(TemporalType.DATE)
+	@Column
+	@DateTimeFormat(pattern="yyyy-MM-dd")
+	private Date dtVisiteArrive;
+	
+	@Temporal(TemporalType.DATE)
+	@Column
+	@DateTimeFormat(pattern="yyyy-MM-dd")
+	private Date dtVisiteFin;
+	
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn
+	private Patient patient;
+
+	
+
+	public Consultation() {
+		super();
+	}
+
+
+
+	public Consultation(Long id, int version, Date dtVisiteArrive, Date dtVisiteFin) {
+		super();
+		this.id = id;
+		this.version = version;
+		this.dtVisiteArrive = dtVisiteArrive;
+		this.dtVisiteFin = dtVisiteFin;
+	}
+
+
 
 	public Long getId() {
 		return id;
 	}
 
+
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
-	private Medecin medecin;
-	
-	private Patient patient;
-	
-	private String specialite;
-	
-	private Long tarif;
 
-	public Medecin getMedecin() {
-		return medecin;
+
+
+	public int getVersion() {
+		return version;
 	}
 
-	public void setMedecin(Medecin medecin) {
-		this.medecin = medecin;
+
+
+	public void setVersion(int version) {
+		this.version = version;
 	}
 
+
+
+	public Date getDtVisiteArrive() {
+		return dtVisiteArrive;
+	}
+
+
+
+	public void setDtVisiteArrive(Date dtVisiteArrive) {
+		this.dtVisiteArrive = dtVisiteArrive;
+	}
+
+
+
+	public Date getDtVisiteFin() {
+		return dtVisiteFin;
+	}
+
+
+
+	public void setDtVisiteFin(Date dtVisiteFin) {
+		this.dtVisiteFin = dtVisiteFin;
+	}
+	
 	public Patient getPatient() {
 		return patient;
 	}
+
+
 
 	public void setPatient(Patient patient) {
 		this.patient = patient;
 	}
 
-	public String getSpecialite() {
-		return specialite;
-	}
-
-	public void setSpecialite(String specialite) {
-		this.specialite = specialite;
-	}
-
-	public Long getTarif() {
-		return tarif;
-	}
-
-	public void setTarif(Long tarif) {
-		this.tarif = tarif;
-	}
-
-	public Consultation() {
-		super();
-	}
-	
-	public Consultation(Medecin medecin, Patient patient, String specialite) {
-		super();
-		this.medecin = medecin;
-		this.patient = patient;
-		this.specialite = specialite;
-	}
-	
 }
