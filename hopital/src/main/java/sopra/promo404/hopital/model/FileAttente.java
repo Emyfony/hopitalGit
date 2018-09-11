@@ -31,7 +31,7 @@ public class FileAttente {
 	@JoinColumn(name="medecin_id")
 	private Medecin medecin;
 	
-	@OneToMany(mappedBy = "fileAttente", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy = "fileAttente", fetch=FetchType.LAZY)
 	private List<Patient> patients;
 	
 	

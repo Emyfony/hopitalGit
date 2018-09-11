@@ -22,7 +22,7 @@ public class Specialite {
 	private String libelle;
 	@Column
 	private Float tarif;
-	@OneToMany(mappedBy= "specialite", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy= "specialite", fetch=FetchType.LAZY)
 	private List<Consultation> consultations;
 	@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="medecin_id")

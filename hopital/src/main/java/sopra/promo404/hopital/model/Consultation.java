@@ -43,6 +43,10 @@ public class Consultation {
 	@JoinColumn(name = "salle_id")
 	private Salle salle;
 	
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name = "specialite_id")
+	private Specialite specialite;
+	
 	
 
 	

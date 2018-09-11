@@ -20,7 +20,7 @@ public class Salle {
 	private int version;
 	@Column
 	private String nom;
-	@OneToMany(mappedBy= "salle", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy= "salle", fetch=FetchType.LAZY)
 	private List<Consultation> consultations;
 	@OneToOne
 	@JoinColumn(name = "medecin_id")

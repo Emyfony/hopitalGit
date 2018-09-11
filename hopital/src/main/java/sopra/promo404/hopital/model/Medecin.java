@@ -34,9 +34,9 @@ public class Medecin {
 	@OneToOne
 	@JoinColumn(name = "salle_id")
 	private Salle salle;
-	@OneToMany(mappedBy= "medecin", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy= "medecin", fetch=FetchType.LAZY)
 	private List<FileAttente> fileAttentes;
-	@OneToMany(mappedBy= "medecin", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy= "medecin", fetch=FetchType.LAZY)
 	private List<Specialite> specialites;
 
 	public int getVersion() {
