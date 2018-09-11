@@ -49,6 +49,15 @@ public class Patient {
 		this.specialite = specialite;
 	}
 
+	public Patient(Long id, String nom, String informations, boolean inscrit, String specialite) {
+		super();
+		this.id = id;
+		this.nom = nom;
+		this.informations = informations;
+		this.inscrit = inscrit;
+		this.specialite = specialite;
+	}
+
 	private String specialite;
 	
 	public Patient() {
