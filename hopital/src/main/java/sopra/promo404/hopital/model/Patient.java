@@ -9,6 +9,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Version;
 
@@ -36,6 +38,10 @@ public class Patient {
 	
 	@OneToMany(mappedBy = "patient", fetch=FetchType.LAZY)
 	private List<Consultation> consultations;
+	
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name = "fileAttente_id")
+	private FileAttente fileAttente;
 	
 	//Constructeur
 	public Patient() {
@@ -124,6 +130,18 @@ public class Patient {
 
 	public void setConsultations(List<Consultation> consultations) {
 		this.consultations = consultations;
+	}
+
+
+
+	public FileAttente getFileAttente() {
+		return fileAttente;
+	}
+
+
+
+	public void setFileAttente(FileAttente fileAttente) {
+		this.fileAttente = fileAttente;
 	}
 	
 

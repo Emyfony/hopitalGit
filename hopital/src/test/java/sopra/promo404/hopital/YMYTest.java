@@ -27,12 +27,16 @@ public class YMYTest {
 		
 		Consultation consu = new Consultation();
 		
+		
+		Patient dupont = new Patient("DUPONT");
+		patientRepo.save(dupont);
+		
+		consu.setPatient(dupont);
+		
 		consuRepo.save(consu);
 	
 		ArrayList<Consultation> listConsu = new ArrayList<Consultation>();
 		listConsu.add(consu);
-
-		Patient dupont = new Patient("DUPONT");
 		
 		dupont.setConsultations(listConsu);
 
