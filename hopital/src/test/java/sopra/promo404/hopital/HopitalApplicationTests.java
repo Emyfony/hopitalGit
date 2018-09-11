@@ -18,11 +18,7 @@ public class HopitalApplicationTests {
 	@Test
 	public void contextLoads() {
 
-		Patient patient1 = new Patient("Roland");
-		patientRepo.save(patient1);
 
-		Patient patient2 = new Patient("Rolande");
-		patientRepo.save(patient2);
 
 	}
 
