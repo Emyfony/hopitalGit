@@ -28,7 +28,7 @@ public class YMYTest {
 		Consultation consu = new Consultation();
 		
 		
-		Patient dupont = new Patient("DUPONT");
+		Patient dupont = new Patient("DUPONTA");
 		patientRepo.save(dupont);
 		
 		consu.setPatient(dupont);
