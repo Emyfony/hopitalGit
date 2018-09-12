@@ -5,10 +5,6 @@ public class Views {
 
 	public static class ViewCommon {
 	}
-	
-	public class ViewSalle extends ViewCommon{
-
-	}
 
 	public static class ViewPatient extends ViewCommon {
 
@@ -58,6 +54,9 @@ public class Views {
 	
 	public static class ViewSalle extends ViewCommon {
 		
+	}
+	
+	public static class ViewConsultation extends ViewCommon {
 	}
 	
 	

@@ -15,55 +15,52 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import sopra.promo404.hopital.dao.IRepositoryPatient;
-import sopra.promo404.hopital.model.Patient;
+import sopra.promo404.hopital.dao.IRepositoryConsultation;
+import sopra.promo404.hopital.model.Consultation;
 import sopra.promo404.hopital.model.Views;
 
 @RestController
-@RequestMapping("/patient")
-public class PatientRestController {
+@RequestMapping("/consultation")
+public class ConsultationRestController {
 
 	@Autowired
-	private IRepositoryPatient patientRepo;
+	private IRepositoryConsultation consuRepo;
 
 	@GetMapping("")
 	@ResponseBody
-	@JsonView(Views.ViewPatient.class)
-	public List<Patient> list() {
-		return patientRepo.findAll();
+	@JsonView(Views.ViewConsultation.class)
+	public List<Consultation> list() {
+		return consuRepo.findAll();
 	}
 	
 	@GetMapping("/{id}")
 	@ResponseBody
-	@JsonView(Views.ViewPatient.class)
-	public Patient detail(@PathVariable Long id) {
-		return patientRepo.findById(id).get();	}
+	@JsonView(Views.ViewConsultation.class)
+	public Consultation detail(@PathVariable Long id) {
+		return consuRepo.findById(id).get();	}
 	
 	
 	@PostMapping("")
 	@ResponseBody
-	@JsonView(Views.ViewPatient.class)
-	public Patient add(@RequestBody Patient patient) {
-		patientRepo.save(patient);
+	@JsonView(Views.ViewConsultation.class)
+	public Consultation add(@RequestBody Consultation consu) {
+		consuRepo.save(consu);
 
-		return patient;
+		return consu;
 	}
 	
 	@PutMapping("/{id}")
 	@ResponseBody
-	@JsonView(Views.ViewPatient.class)
-	public Patient edit(@RequestBody Patient patient, @PathVariable Long id) {
-		patientRepo.save(patient);
+	@JsonView(Views.ViewConsultation.class)
+	public Consultation edit(@RequestBody Consultation consu, @PathVariable Long id) {
+		consuRepo.save(consu);
 
-		return (Patient) patientRepo.findById(id).get();
+		return (Consultation) consuRepo.findById(id).get();
 	}
 	
 	@DeleteMapping("/{id}")
-	@JsonView(Views.ViewPatient.class)
+	@JsonView(Views.ViewConsultation.class)
 	public void delete(@PathVariable Long id) {
-//		Patient patient = (Patient) patientRepo.findById(id).get();
-//		patient.setConsultations(null);
-//		patientRepo.save(patient);
-		patientRepo.deleteById(id);
+		consuRepo.deleteById(id);
 	}
 }

@@ -15,24 +15,30 @@ import javax.persistence.Version;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 public class Consultation {
 	
 	@Id
 	@GeneratedValue
+	@JsonView(Views.ViewCommon.class)
 	private Long id;
 
 	@Version
+	@JsonView(Views.ViewCommon.class)
 	private int version;
 	
 	@Temporal(TemporalType.DATE)
 	@Column
 	@DateTimeFormat(pattern="yyyy-MM-dd")
+	@JsonView(Views.ViewCommon.class)
 	private Date dtVisiteArrive;
 	
 	@Temporal(TemporalType.DATE)
 	@Column
 	@DateTimeFormat(pattern="yyyy-MM-dd")
+	@JsonView(Views.ViewCommon.class)
 	private Date dtVisiteFin;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
