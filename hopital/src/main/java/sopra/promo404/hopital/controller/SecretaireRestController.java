@@ -52,5 +52,49 @@ public class SecretaireRestController {
 	public Secretaire add(@RequestBody Secretaire secretaire) {
 		secretaireRepo.save(secretaire);
 
+		return secretaire;
+	}
+
+	@PutMapping("/{id}")
+	@ResponseBody
+	@JsonView(Views.ViewSecretaire.class)
+	public Secretaire edit(@RequestBody Secretaire secretaire, @PathVariable Long id) {
+		secretaireRepo.save(secretaire);
+
+		return (Secretaire) secretaireRepo.findById(id).get();
+	}
+
+	@PatchMapping("/{id}")
+	@ResponseBody
+	@JsonView(Views.ViewSecretaire.class)
+	public Secretaire partialEdit(@RequestBody Map<String, Object> fields, @PathVariable Long id) {
+		Secretaire secretaire = (Secretaire) secretaireRepo.findById(id).get();
+
+		for (String key : fields.keySet()) { // id=67 version=1 nom="HTML"
+			Object value = fields.get(key);
+
+			Field field = ReflectionUtils.findField(Secretaire.class, key);
+
+			if (field.getType().equals(Long.class)) {
+				value = Long.valueOf(value.toString());
+			}
+
+			ReflectionUtils.makeAccessible(field);
+			ReflectionUtils.setField(field, secretaire, value);
+		}
+
+		secretaireRepo.save(secretaire);
+
+		secretaire = (Secretaire) secretaireRepo.findById(id).get();
+
+		return secretaire;
+	}
+
+	@DeleteMapping("/{id}")
+	@JsonView(Views.ViewSecretaire.class)
+	public void delete(@PathVariable Long id) {
+		secretaireRepo.deleteById(id);
+	}
+
 }
 

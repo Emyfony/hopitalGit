@@ -43,7 +43,7 @@ public class SpecialiteRestController {
 	@ResponseBody
 	@JsonView(Views.ViewSpecialiteWithConsultation.class)
 	public Specialite detailconsultation(@PathVariable String consultation) {
-		return (Specialite) specialiteRepo.findAllSpecialiteByIdWithMedecins(consultation);
+		return (Specialite) specialiteRepo.findAllSpecialiteByIdWithConsultations(consultation);
 	}
 
 	@PostMapping("")
