@@ -55,4 +55,10 @@ public class Views {
 	public static class ViewFileAttenteWithPatient extends ViewFileAttente {
 	}
 
+	
+	public static class ViewSalle extends ViewCommon {
+		
+	}
+	
+	
 }

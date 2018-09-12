@@ -25,5 +25,20 @@ public interface IRepositoryFileAttente extends JpaRepository<FileAttente, Long>
 //	List<FileAttente> findSecretaireByCapacite(int capacite);
 //
 
+	@Query("select distinct f from FileAttente f left join fetch f.patients p")
+	List<FileAttente> findAllFileAttenteByIdWithPatient(String patient);
+	
+	@Query("select distinct f from FileAttente f left join fetch f.secretaire s")
+	List<FileAttente> findAllFileAttenteByIdWithSecretaire(String secretaire);
+	
+	@Query("select distinct f from FileAttente f left join fetch f.medecin m")
+	List<FileAttente> findAllFileAttenteByIdWithMedecin(String medecin);
+
+
+	
+	@Query("select f from FileAttente f where upper(f.capacite) = ?1")
+	List<FileAttente> findSecretaireByCapacite(int capacite);
+
+
 
 }

@@ -28,77 +28,71 @@ import sopra.promo404.hopital.model.Views;
 @RestController
 @RequestMapping("/specialite")
 public class SpecialiteRestController {
-//	@Autowired
-//	private IRepositorySpecialite specialiteRepo;
-//	
-//	@GetMapping("")
-//	@ResponseBody
-//	@JsonView(Views.ViewSpecialite.class)
-//	public List<Specialite> list() {
-//		return specialiteRepo.findAllSpecialite();
-//	}
-////A REVOIR
-//	@GetMapping("/{id}")
-//	@ResponseBody
-//	@JsonView(Views.ViewSpecialiteWithMedecin.class)
-//	public Specialite detailmedecin(@PathVariable String medecin) {
-//		return (Specialite) specialiteRepo.findAllSpecialiteByIdWithMedecins(medecin);
-//	}
-//	
-//	@GetMapping("/{id}")
-//	@ResponseBody
-//	@JsonView(Views.ViewSpecialiteWithConsultation.class)
-//	public Specialite detailconsultation(@PathVariable String consultation) {
-//		return (Specialite) specialiteRepo.findAllSpecialiteByIdWithMedecins(consultation);
-//	}
-//
-//	@PostMapping("")
-//	@ResponseBody 
-//	@JsonView(Views.ViewSpecialite.class)
-//	public Specialite add(@RequestBody Specialite specialite) {
-//		specialiteRepo.save(specialite);
-//
-//		return specialite;
-//	}
-//
-//	@PutMapping("/{id}")
-//	@ResponseBody
-//	@JsonView(Views.ViewSpecialite.class)
-//	public Specialite edit(@RequestBody Specialite specialite, @PathVariable Long id) {
-//		specialiteRepo.save(specialite);
-//
-//		return (Specialite) specialiteRepo.findById(id).get();
-//	}
-//
-//	@PatchMapping("/{id}")
-//	@ResponseBody
-//	@JsonView(Views.ViewSpecialite.class)
-//	public Specialite partialEdit(@RequestBody Map<String, Object> fields, @PathVariable Long id) {
-//		Specialite specialite = (Specialite) specialiteRepo.findById(id).get();
-//
-//		for (String key : fields.keySet()) { // id=67 version=1 nom="HTML"
-//			Object value = fields.get(key);
-//
-//			Field field = ReflectionUtils.findField(Specialite.class, key);
-//
-//			if (field.getType().equals(Long.class)) {
-//				value = Long.valueOf(value.toString());
-//			}
-//
-//			ReflectionUtils.makeAccessible(field);
-//			ReflectionUtils.setField(field, specialite, value);
-//		}
-//
-//		specialiteRepo.save(specialite);
-//
-//		specialite = (Specialite) specialiteRepo.findById(id).get();
-//
-//		return specialite;
-//	}
-//
-//	@DeleteMapping("/{id}")
-//	@JsonView(Views.ViewSpecialite.class)
-//	public void delete(@PathVariable Long id) {
-//		specialiteRepo.deleteById(id);
-//	}
+	@Autowired
+	private IRepositorySpecialite specialiteRepo;
+	
+	@GetMapping("")
+	@ResponseBody
+	@JsonView(Views.ViewSpecialite.class)
+	public List<Specialite> list() {
+		return specialiteRepo.findAllSpecialite();
+	}
+
+	
+	@GetMapping("/{id}")
+	@ResponseBody
+	@JsonView(Views.ViewSpecialiteWithConsultation.class)
+	public Specialite detailconsultation(@PathVariable String consultation) {
+		return (Specialite) specialiteRepo.findAllSpecialiteByIdWithMedecins(consultation);
+	}
+
+	@PostMapping("")
+	@ResponseBody 
+	@JsonView(Views.ViewSpecialite.class)
+	public Specialite add(@RequestBody Specialite specialite) {
+		specialiteRepo.save(specialite);
+
+		return specialite;
+	}
+
+	@PutMapping("/{id}")
+	@ResponseBody
+	@JsonView(Views.ViewSpecialite.class)
+	public Specialite edit(@RequestBody Specialite specialite, @PathVariable Long id) {
+		specialiteRepo.save(specialite);
+
+		return (Specialite) specialiteRepo.findById(id).get();
+	}
+
+	@PatchMapping("/{id}")
+	@ResponseBody
+	@JsonView(Views.ViewSpecialite.class)
+	public Specialite partialEdit(@RequestBody Map<String, Object> fields, @PathVariable Long id) {
+		Specialite specialite = (Specialite) specialiteRepo.findById(id).get();
+
+		for (String key : fields.keySet()) { // id=67 version=1 nom="HTML"
+			Object value = fields.get(key);
+
+			Field field = ReflectionUtils.findField(Specialite.class, key);
+
+			if (field.getType().equals(Long.class)) {
+				value = Long.valueOf(value.toString());
+			}
+
+			ReflectionUtils.makeAccessible(field);
+			ReflectionUtils.setField(field, specialite, value);
+		}
+
+		specialiteRepo.save(specialite);
+
+		specialite = (Specialite) specialiteRepo.findById(id).get();
+
+		return specialite;
+	}
+
+	@DeleteMapping("/{id}")
+	@JsonView(Views.ViewSpecialite.class)
+	public void delete(@PathVariable Long id) {
+		specialiteRepo.deleteById(id);
+	}
 }

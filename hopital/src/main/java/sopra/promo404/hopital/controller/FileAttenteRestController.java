@@ -27,15 +27,15 @@ import sopra.promo404.hopital.model.Views;
 @RequestMapping("/fileAttente")
 public class FileAttenteRestController {
 	
-//	@Autowired
-//	private IRepositoryFileAttente fileAttenteRepo;
-//	
-//	@GetMapping("")
-//	@ResponseBody
-//	@JsonView(Views.ViewFileAttente.class)
-//	public List<FileAttente> list() {
-//		return fileAttenteRepo.findAll();
-//	}
+	@Autowired
+	private IRepositoryFileAttente fileAttenteRepo;
+	
+	@GetMapping("")
+	@ResponseBody
+	@JsonView(Views.ViewFileAttente.class)
+	public List<FileAttente> list() {
+		return fileAttenteRepo.findAll();
+	}
 ////A REVOIR
 //	@GetMapping("/{id}")
 //	@ResponseBody
@@ -43,68 +43,68 @@ public class FileAttenteRestController {
 //	public FileAttente detailmedecin(@PathVariable String medecin) {
 //		return (FileAttente) fileAttenteRepo.findAllFileAttenteByIdWithMedecin(medecin);
 //	}
-//	
-//	@GetMapping("/{id}")
-//	@ResponseBody
-//	@JsonView(Views.ViewFileAttenteWithPatient.class)
-//	public FileAttente detailpatient(@PathVariable String patient) {
-//		return (FileAttente) fileAttenteRepo.findAllFileAttenteByIdWithPatient(patient);
-//	}
-//	
+	
+	@GetMapping("/{id}")
+	@ResponseBody
+	@JsonView(Views.ViewFileAttenteWithPatient.class)
+	public FileAttente detailpatient(@PathVariable String patient) {
+		return (FileAttente) fileAttenteRepo.findAllFileAttenteByIdWithPatient(patient);
+	}
+	
 //	@GetMapping("/{id}")
 //	@ResponseBody
 //	@JsonView(Views.ViewFileAttenteWithSecretaire.class)
 //	public FileAttente detailsecretaire(@PathVariable String secretaire) {
 //		return (FileAttente) fileAttenteRepo.findAllFileAttenteByIdWithSecretaire(secretaire);
 //	}
-//
-//	@PostMapping("")
-//	@ResponseBody 
-//	@JsonView(Views.ViewFileAttente.class)
-//	public FileAttente add(@RequestBody FileAttente fileAttente) {
-//		fileAttenteRepo.save(fileAttente);
-//
-//		return fileAttente;
-//	}
-//
-//	@PutMapping("/{id}")
-//	@ResponseBody
-//	@JsonView(Views.ViewFileAttente.class)
-//	public FileAttente edit(@RequestBody FileAttente fileAttente, @PathVariable Long id) {
-//		fileAttenteRepo.save(fileAttente);
-//
-//		return (FileAttente) fileAttenteRepo.findById(id).get();
-//	}
-//
-//	@PatchMapping("/{id}")
-//	@ResponseBody
-//	@JsonView(Views.ViewFileAttente.class)
-//	public FileAttente partialEdit(@RequestBody Map<String, Object> fields, @PathVariable Long id) {
-//		FileAttente fileAttente = (FileAttente) fileAttenteRepo.findById(id).get();
-//
-//		for (String key : fields.keySet()) { // id=67 version=1 nom="HTML"
-//			Object value = fields.get(key);
-//
-//			Field field = ReflectionUtils.findField(FileAttente.class, key);
-//
-//			if (field.getType().equals(Long.class)) {
-//				value = Long.valueOf(value.toString());
-//			}
-//
-//			ReflectionUtils.makeAccessible(field);
-//			ReflectionUtils.setField(field, fileAttente, value);
-//		}
-//
-//		fileAttenteRepo.save(fileAttente);
-//
-//		fileAttente = (FileAttente) fileAttenteRepo.findById(id).get();
-//
-//		return fileAttente;
-//	}
-//
-//	@DeleteMapping("/{id}")
-//	@JsonView(Views.ViewFileAttente.class)
-//	public void delete(@PathVariable Long id) {
-//		fileAttenteRepo.deleteById(id);
-//	}
+
+	@PostMapping("")
+	@ResponseBody 
+	@JsonView(Views.ViewFileAttente.class)
+	public FileAttente add(@RequestBody FileAttente fileAttente) {
+		fileAttenteRepo.save(fileAttente);
+
+		return fileAttente;
+	}
+
+	@PutMapping("/{id}")
+	@ResponseBody
+	@JsonView(Views.ViewFileAttente.class)
+	public FileAttente edit(@RequestBody FileAttente fileAttente, @PathVariable Long id) {
+		fileAttenteRepo.save(fileAttente);
+
+		return (FileAttente) fileAttenteRepo.findById(id).get();
+	}
+
+	@PatchMapping("/{id}")
+	@ResponseBody
+	@JsonView(Views.ViewFileAttente.class)
+	public FileAttente partialEdit(@RequestBody Map<String, Object> fields, @PathVariable Long id) {
+		FileAttente fileAttente = (FileAttente) fileAttenteRepo.findById(id).get();
+
+		for (String key : fields.keySet()) { // id=67 version=1 nom="HTML"
+			Object value = fields.get(key);
+
+			Field field = ReflectionUtils.findField(FileAttente.class, key);
+
+			if (field.getType().equals(Long.class)) {
+				value = Long.valueOf(value.toString());
+			}
+
+			ReflectionUtils.makeAccessible(field);
+			ReflectionUtils.setField(field, fileAttente, value);
+		}
+
+		fileAttenteRepo.save(fileAttente);
+
+		fileAttente = (FileAttente) fileAttenteRepo.findById(id).get();
+
+		return fileAttente;
+	}
+
+	@DeleteMapping("/{id}")
+	@JsonView(Views.ViewFileAttente.class)
+	public void delete(@PathVariable Long id) {
+		fileAttenteRepo.deleteById(id);
+	}
 }
