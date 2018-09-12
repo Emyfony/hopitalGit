@@ -30,84 +30,84 @@ import sopra.promo404.hopital.model.Views;
 public class MedecinRestController {
 
 	
-	@Autowired
-	private IRepositoryMedecin medecinRepo;
-	
-	@GetMapping("")
-	@ResponseBody
-	@JsonView(Views.ViewMedecin.class)
-	public List<Medecin> list() {
-		return medecinRepo.findAll();
-	}
-//A REVOIR
-	@GetMapping("/{id}")
-	@ResponseBody
-	@JsonView(Views.ViewMedecinWithSpecialite.class)
-	public Medecin detailspecialite(@PathVariable String specialite) {
-		return (Medecin) medecinRepo.findAllMedecinByIdWithSpecialite(specialite);
-	}
-	
-	@GetMapping("/{id}")
-	@ResponseBody
-	@JsonView(Views.ViewMedecinWithSalle.class)
-	public Medecin detailsalle(@PathVariable String salle) {
-		return (Medecin) medecinRepo.findAllMedecinByIdWithSalle(salle);
-	}
-	
-	@GetMapping("/{id}")
-	@ResponseBody
-	@JsonView(Views.ViewMedecinWithFileAttente.class)
-	public Medecin detailfileattente(@PathVariable String fileAttente) {
-		return (Medecin) medecinRepo.findAllMedecinByIdWithFileAttente(fileAttente);
-	}
-
-	@PostMapping("")
-	@ResponseBody 
-	@JsonView(Views.ViewMedecin.class)
-	public Medecin add(@RequestBody Medecin medecin) {
-		medecinRepo.save(medecin);
-
-		return medecin;
-	}
-
-	@PutMapping("/{id}")
-	@ResponseBody
-	@JsonView(Views.ViewMedecin.class)
-	public Medecin edit(@RequestBody Medecin medecin, @PathVariable Long id) {
-		medecinRepo.save(medecin);
-
-		return (Medecin) medecinRepo.findById(id).get();
-	}
-
-	@PatchMapping("/{id}")
-	@ResponseBody
-	@JsonView(Views.ViewMedecin.class)
-	public Medecin partialEdit(@RequestBody Map<String, Object> fields, @PathVariable Long id) {
-		Medecin medecin = (Medecin) medecinRepo.findById(id).get();
-
-		for (String key : fields.keySet()) { // id=67 version=1 nom="HTML"
-			Object value = fields.get(key);
-
-			Field field = ReflectionUtils.findField(Medecin.class, key);
-
-			if (field.getType().equals(Long.class)) {
-				value = Long.valueOf(value.toString());
-			}
-
-			ReflectionUtils.makeAccessible(field);
-			ReflectionUtils.setField(field, medecin, value);
-		}
-
-		medecinRepo.save(medecin);
-
-		medecin = (Medecin) medecinRepo.findById(id).get();
-
-		return medecin;
-	}
-
-	@DeleteMapping("/{id}")
-	@JsonView(Views.ViewMedecin.class)
-	public void delete(@PathVariable Long id) {
-		medecinRepo.deleteById(id);
-	}
+//	@Autowired
+//	private IRepositoryMedecin medecinRepo;
+//	
+//	@GetMapping("")
+//	@ResponseBody
+//	@JsonView(Views.ViewMedecin.class)
+//	public List<Medecin> list() {
+//		return medecinRepo.findAll();
+//	}
+////A REVOIR
+//	@GetMapping("/{id}")
+//	@ResponseBody
+//	@JsonView(Views.ViewMedecinWithSpecialite.class)
+//	public Medecin detailspecialite(@PathVariable String specialite) {
+//		return (Medecin) medecinRepo.findAllMedecinByIdWithSpecialite(specialite);
+//	}
+//	
+//	@GetMapping("/{id}")
+//	@ResponseBody
+//	@JsonView(Views.ViewMedecinWithSalle.class)
+//	public Medecin detailsalle(@PathVariable String salle) {
+//		return (Medecin) medecinRepo.findAllMedecinByIdWithSalle(salle);
+//	}
+//	
+//	@GetMapping("/{id}")
+//	@ResponseBody
+//	@JsonView(Views.ViewMedecinWithFileAttente.class)
+//	public Medecin detailfileattente(@PathVariable String fileAttente) {
+//		return (Medecin) medecinRepo.findAllMedecinByIdWithFileAttente(fileAttente);
+//	}
+//
+//	@PostMapping("")
+//	@ResponseBody 
+//	@JsonView(Views.ViewMedecin.class)
+//	public Medecin add(@RequestBody Medecin medecin) {
+//		medecinRepo.save(medecin);
+//
+//		return medecin;
+//	}
+//
+//	@PutMapping("/{id}")
+//	@ResponseBody
+//	@JsonView(Views.ViewMedecin.class)
+//	public Medecin edit(@RequestBody Medecin medecin, @PathVariable Long id) {
+//		medecinRepo.save(medecin);
+//
+//		return (Medecin) medecinRepo.findById(id).get();
+//	}
+//
+//	@PatchMapping("/{id}")
+//	@ResponseBody
+//	@JsonView(Views.ViewMedecin.class)
+//	public Medecin partialEdit(@RequestBody Map<String, Object> fields, @PathVariable Long id) {
+//		Medecin medecin = (Medecin) medecinRepo.findById(id).get();
+//
+//		for (String key : fields.keySet()) { // id=67 version=1 nom="HTML"
+//			Object value = fields.get(key);
+//
+//			Field field = ReflectionUtils.findField(Medecin.class, key);
+//
+//			if (field.getType().equals(Long.class)) {
+//				value = Long.valueOf(value.toString());
+//			}
+//
+//			ReflectionUtils.makeAccessible(field);
+//			ReflectionUtils.setField(field, medecin, value);
+//		}
+//
+//		medecinRepo.save(medecin);
+//
+//		medecin = (Medecin) medecinRepo.findById(id).get();
+//
+//		return medecin;
+//	}
+//
+//	@DeleteMapping("/{id}")
+//	@JsonView(Views.ViewMedecin.class)
+//	public void delete(@PathVariable Long id) {
+//		medecinRepo.deleteById(id);
+//	}
 }

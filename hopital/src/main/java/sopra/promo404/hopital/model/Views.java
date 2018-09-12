@@ -2,7 +2,12 @@ package sopra.promo404.hopital.model;
 
 public class Views {
 
+
 	public static class ViewCommon {
+	}
+	
+	public class ViewSalle extends ViewCommon{
+
 	}
 
 	public static class ViewPatient extends ViewCommon {
