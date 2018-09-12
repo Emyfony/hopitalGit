@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Patient</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+</head>
+<body class="bg-light">
+	<div class="breadcrumb">
+		<a class="breadcrumb-item" href="#">Accueil</a> <a
+			class="breadcrumb-item" href="#">Secretariat</a> <a
+			class="breadcrumb-item" href="#">Gestion patient</a> <a
+			class="breadcrumb-item" href="#">Nouveau</a>
+	</div>
+
+	<div class="container">
+		<header class="header">
+
+			<!-- 			<h1>Edition du patient</h1> -->
+
+		</header>
+
+		<section>
+			<form action="patient" method="post">
+				<input type="hidden" name="action" value="save" /> <input
+					type="hidden" name="id" id="id" value="" /> <input type="hidden"
+					name="version" id="version" value="" />
+				<div class="form-group row" style="margin-top: 50px;">
+					<label class="col-sm-2 col-form-label">Nom</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" name="nom" id="nom"
+							placeholder="Le nom" required value="" />
+					</div>
+				</div>
+
+
+				<div class="form-group row">
+					<label class="col-sm-2 col-form-label">Prenom</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" name="prenom" id="prenom"
+							placeholder="Le prenom" required value="" />
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label class="col-sm-2 col-form-label">Civilité</label>
+					<div class="col-sm-10">
+						<select class="custom-select" name="civilite" id="civilite">
+							<option value=""></option>
+						</select>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label class="col-sm-2 col-form-label">Carte vitale</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" name="carteVitale" id="carteVitale"
+							placeholder="Numero de carte vitale" required value="" />
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<div class="col-sm-2"></div>
+					<div class="col-sm-7">
+						<button type="submit" class="btn btn-primary col-sm-12">Soumettre</button>
+					</div>
+					<div class="col-sm-3">
+						<a href="" class="btn btn-warning col-sm-12">Annuler</a>
+					</div>
+				</div>
+			</form>
+		</section>
+		
+	</div>
+
+
+</body>
+</html>
