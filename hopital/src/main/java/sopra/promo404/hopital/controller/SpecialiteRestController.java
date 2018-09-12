@@ -22,6 +22,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 import sopra.promo404.hopital.dao.IRepositorySpecialite;
 import sopra.promo404.hopital.model.Specialite;
+import sopra.promo404.hopital.model.Views;
 
 
 @RestController
@@ -36,28 +37,35 @@ public class SpecialiteRestController {
 	public List<Specialite> list() {
 		return specialiteRepo.findAllSpecialite();
 	}
-
+//A REVOIR
 	@GetMapping("/{id}")
 	@ResponseBody
-	@JsonView(Views.ViewSpecialiteWithOrdinateur.class)
-	public Specialite detail(@PathVariable Long id) {
-		return specialiteRepo.findSpecialiteByIdWithOrdinateur(id);
+	@JsonView(Views.ViewSpecialiteWithMedecin.class)
+	public Specialite detailmedecin(@PathVariable String medecin) {
+		return (Specialite) specialiteRepo.findAllSpecialiteByIdWithMedecins(medecin);
+	}
+	
+	@GetMapping("/{id}")
+	@ResponseBody
+	@JsonView(Views.ViewSpecialiteWithConsultation.class)
+	public Specialite detailconsultation(@PathVariable String consultation) {
+		return (Specialite) specialiteRepo.findAllSpecialiteByIdWithMedecins(consultation);
 	}
 
 	@PostMapping("")
-	@ResponseBody
+	@ResponseBody 
 	@JsonView(Views.ViewSpecialite.class)
-	public Specialite add(@RequestBody Specialite eleve) {
-		specialiteRepo.save(eleve);
+	public Specialite add(@RequestBody Specialite specialite) {
+		specialiteRepo.save(specialite);
 
-		return eleve;
+		return specialite;
 	}
 
 	@PutMapping("/{id}")
 	@ResponseBody
 	@JsonView(Views.ViewSpecialite.class)
-	public Specialite edit(@RequestBody Specialite eleve, @PathVariable Long id) {
-		specialiteRepo.save(eleve);
+	public Specialite edit(@RequestBody Specialite specialite, @PathVariable Long id) {
+		specialiteRepo.save(specialite);
 
 		return (Specialite) specialiteRepo.findById(id).get();
 	}
@@ -66,7 +74,7 @@ public class SpecialiteRestController {
 	@ResponseBody
 	@JsonView(Views.ViewSpecialite.class)
 	public Specialite partialEdit(@RequestBody Map<String, Object> fields, @PathVariable Long id) {
-		Specialite eleve = (Specialite) specialiteRepo.findById(id).get();
+		Specialite specialite = (Specialite) specialiteRepo.findById(id).get();
 
 		for (String key : fields.keySet()) { // id=67 version=1 nom="HTML"
 			Object value = fields.get(key);
@@ -78,14 +86,14 @@ public class SpecialiteRestController {
 			}
 
 			ReflectionUtils.makeAccessible(field);
-			ReflectionUtils.setField(field, eleve, value);
+			ReflectionUtils.setField(field, specialite, value);
 		}
 
-		specialiteRepo.save(eleve);
+		specialiteRepo.save(specialite);
 
-		eleve = (Specialite) specialiteRepo.findById(id).get();
+		specialite = (Specialite) specialiteRepo.findById(id).get();
 
-		return eleve;
+		return specialite;
 	}
 
 	@DeleteMapping("/{id}")
