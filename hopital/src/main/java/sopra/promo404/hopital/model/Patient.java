@@ -44,10 +44,12 @@ public class Patient {
 	private Civilite civilite;
 	
 	@OneToMany(mappedBy = "patient", fetch=FetchType.LAZY)
+	@JsonView(Views.ViewPatient.class)
 	private List<Consultation> consultations;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name = "fileAttente_id")
+	@JsonView(Views.ViewPatientWithFileAttente.class)
 	private FileAttente fileAttente;
 	
 	//Constructeur

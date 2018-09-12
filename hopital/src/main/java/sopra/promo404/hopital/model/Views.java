@@ -10,6 +10,10 @@ public class Views {
 
 	}
 
+	public static class ViewPatientWithFileAttente extends ViewPatient{
+		
+	}
+	
 	public static class ViewSpecialite extends ViewCommon {
 	}
 
@@ -58,5 +62,7 @@ public class Views {
 	public static class ViewConsultation extends ViewCommon {
 	}
 	
+	public static class ViewConsultationWithClient extends ViewConsultation {
+	}
 	
 }

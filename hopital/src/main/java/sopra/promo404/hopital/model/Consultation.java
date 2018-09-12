@@ -43,6 +43,7 @@ public class Consultation {
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name = "patient_id")
+	@JsonView(Views.ViewConsultationWithClient.class)
 	private Patient patient;
 	
 	@ManyToOne(fetch=FetchType.EAGER)

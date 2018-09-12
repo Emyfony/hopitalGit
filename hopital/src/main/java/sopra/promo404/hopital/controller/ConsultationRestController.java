@@ -35,7 +35,7 @@ public class ConsultationRestController {
 	
 	@GetMapping("/{id}")
 	@ResponseBody
-	@JsonView(Views.ViewConsultation.class)
+	@JsonView(Views.ViewConsultationWithClient.class)
 	public Consultation detail(@PathVariable Long id) {
 		return consuRepo.findById(id).get();	}
 	
@@ -51,7 +51,7 @@ public class ConsultationRestController {
 	
 	@PutMapping("/{id}")
 	@ResponseBody
-	@JsonView(Views.ViewConsultation.class)
+	@JsonView(Views.ViewConsultationWithClient.class)
 	public Consultation edit(@RequestBody Consultation consu, @PathVariable Long id) {
 		consuRepo.save(consu);
 
@@ -59,7 +59,7 @@ public class ConsultationRestController {
 	}
 	
 	@DeleteMapping("/{id}")
-	@JsonView(Views.ViewConsultation.class)
+	@JsonView(Views.ViewConsultationWithClient.class)
 	public void delete(@PathVariable Long id) {
 		consuRepo.deleteById(id);
 	}

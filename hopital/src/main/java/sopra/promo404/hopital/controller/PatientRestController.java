@@ -35,7 +35,7 @@ public class PatientRestController {
 	
 	@GetMapping("/{id}")
 	@ResponseBody
-	@JsonView(Views.ViewPatient.class)
+	@JsonView(Views.ViewPatientWithFileAttente.class)
 	public Patient detail(@PathVariable Long id) {
 		return patientRepo.findById(id).get();	}
 	
@@ -51,7 +51,7 @@ public class PatientRestController {
 	
 	@PutMapping("/{id}")
 	@ResponseBody
-	@JsonView(Views.ViewPatient.class)
+	@JsonView(Views.ViewPatientWithFileAttente.class)
 	public Patient edit(@RequestBody Patient patient, @PathVariable Long id) {
 		patientRepo.save(patient);
 
@@ -59,7 +59,7 @@ public class PatientRestController {
 	}
 	
 	@DeleteMapping("/{id}")
-	@JsonView(Views.ViewPatient.class)
+	@JsonView(Views.ViewPatientWithFileAttente.class)
 	public void delete(@PathVariable Long id) {
 //		Patient patient = (Patient) patientRepo.findById(id).get();
 //		patient.setConsultations(null);
