@@ -10,22 +10,31 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Version;
+
+import com.fasterxml.jackson.annotation.JsonView;
+
 import javax.persistence.Entity;
 @Entity
 public class Specialite {
 	@Id
 	@GeneratedValue
+	@JsonView(Views.ViewCommon.class)
 	private Long id;
 	@Version
+	@JsonView(Views.ViewCommon.class)
 	private int version;
 	@Column
+	@JsonView(Views.ViewCommon.class)
 	private String libelle;
 	@Column
+	@JsonView(Views.ViewCommon.class)
 	private Float tarif;
+	@JsonView(Views.ViewSpecialite.class)
 	@OneToMany(mappedBy= "specialite", fetch=FetchType.LAZY)
 	private List<Consultation> consultations;
 	@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="medecin_id")
+	@JsonView(Views.ViewSpecialite.class)
 	private Medecin medecin;
 	public int getVersion() {
 		return version;

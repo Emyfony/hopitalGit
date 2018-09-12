@@ -10,20 +10,30 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Version;
+
+import com.fasterxml.jackson.annotation.JsonView;
+
+import sopra.promo404.hopital.model.Views;
+
 import javax.persistence.Entity;
 @Entity
 public class Salle {
 	@Id
 	@GeneratedValue
+	@JsonView(Views.ViewCommon.class)
 	private Long id;
 	@Version
+	@JsonView(Views.ViewCommon.class)
 	private int version;
 	@Column
+	@JsonView(Views.ViewCommon.class)
 	private String nom;
 	@OneToMany(mappedBy= "salle", fetch=FetchType.LAZY)
+	@JsonView(Views.ViewSalle.class)
 	private List<Consultation> consultations;
 	@OneToOne
 	@JoinColumn(name = "medecin_id")
+	@JsonView(Views.ViewCommon.class)
 	private Medecin medecin;
 
 	public int getVersion() {
