@@ -11,23 +11,32 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 public class Secretaire {
 	@Id
 	@GeneratedValue
+	@JsonView(Views.ViewCommon.class)
 	private Long id;
 	@Version
+	@JsonView(Views.ViewCommon.class)
 	private int version;
 	@Column(length = 100)
+	@JsonView(Views.ViewCommon.class)
 	private String nom;
 
 	@Column(length = 100)
+	@JsonView(Views.ViewCommon.class)
 	private String prenom;
 	@Column()
+	@JsonView(Views.ViewCommon.class)
 	private Civilite civilite;
 	@Column
+	@JsonView(Views.ViewCommon.class)
 	private boolean enPause;
 	@Column
+	@JsonView(Views.ViewCommon.class)
 	@OneToMany(mappedBy = "secretaire", fetch=FetchType.LAZY)
 	private List<FileAttente> fileAttentes;
 

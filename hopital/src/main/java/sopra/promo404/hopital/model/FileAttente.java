@@ -13,25 +13,33 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Version;
+
+import com.fasterxml.jackson.annotation.JsonView;
 @Entity
 public class FileAttente {
 	@Id
 	@GeneratedValue
+	@JsonView(Views.ViewCommon.class)
 	private Long id;
 	@Version
+	@JsonView(Views.ViewCommon.class)
 	private int version;
 	@Column
+	@JsonView(Views.ViewCommon.class)
 	private int capacite;
 
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="secretaire_id")
+	@JsonView(Views.ViewCommon.class)
 	private Secretaire secretaire;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="medecin_id")
+	@JsonView(Views.ViewCommon.class)
 	private Medecin medecin;
 	
 	@OneToMany(mappedBy = "fileAttente", fetch=FetchType.LAZY)
+	@JsonView(Views.ViewCommon.class)
 	private List<Patient> patients;
 	
 	
