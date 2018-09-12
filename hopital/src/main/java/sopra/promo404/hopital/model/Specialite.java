@@ -29,7 +29,7 @@ public class Specialite {
 	@Column
 	@JsonView(Views.ViewCommon.class)
 	private Float tarif;
-	@JsonView(Views.ViewSpecialite.class)
+	@JsonView(Views.ViewSpecialiteWithConsultation.class)
 	@OneToMany(mappedBy= "specialite", fetch=FetchType.LAZY)
 	private List<Consultation> consultations;
 	@ManyToOne(fetch=FetchType.EAGER)

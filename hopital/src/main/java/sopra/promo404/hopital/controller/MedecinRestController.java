@@ -57,8 +57,8 @@ public class MedecinRestController {
 	@GetMapping("/{id}")
 	@ResponseBody
 	@JsonView(Views.ViewMedecinWithFileAttente.class)
-	public Medecin detailfileattente(@PathVariable String fileAttente) {
-		return (Medecin) medecinRepo.findAllMedecinByIdWithFileAttente(fileAttente);
+	public Medecin detailfileattente(@PathVariable Long id) {
+		return medecinRepo.findMedecinByIdWithSpecialite(id);
 	}
 
 	@PostMapping("")

@@ -43,7 +43,7 @@ public class Medecin {
 	private boolean cmu;
 	@OneToOne
 	@JoinColumn(name = "salle_id")
-	@JsonView(Views.ViewCommon.class)
+	@JsonView(Views.ViewMedecin.class)
 	private Salle salle;
 	@OneToMany(mappedBy= "medecin", fetch=FetchType.LAZY)
 	@JsonView(Views.ViewMedecin.class)

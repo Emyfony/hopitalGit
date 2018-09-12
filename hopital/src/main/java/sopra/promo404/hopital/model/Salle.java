@@ -6,7 +6,6 @@ import javax.persistence.Column;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Version;
@@ -31,9 +30,8 @@ public class Salle {
 	@OneToMany(mappedBy= "salle", fetch=FetchType.LAZY)
 	@JsonView(Views.ViewSalle.class)
 	private List<Consultation> consultations;
-	@OneToOne
-	@JoinColumn(name = "medecin_id")
-	@JsonView(Views.ViewCommon.class)
+	@OneToOne(mappedBy= "salle", fetch=FetchType.LAZY)
+	@JsonView(Views.ViewSalle.class)
 	private Medecin medecin;
 
 	public int getVersion() {

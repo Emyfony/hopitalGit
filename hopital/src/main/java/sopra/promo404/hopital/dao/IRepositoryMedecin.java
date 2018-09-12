@@ -12,14 +12,14 @@ import sopra.promo404.hopital.model.Medecin;
 public interface IRepositoryMedecin extends JpaRepository<Medecin, Long> {
 
 
-	@Query("select m from Medecin m left join fetch m.fileAttentes f")
-	List<Medecin> findAllMedecinByIdWithFileAttente(String fileAttente);
+	@Query("select m from Medecin m left join fetch m.fileAttentes f where m.id =?1")
+	List<Medecin> findAllMedecinByIdWithFileAttente(Long id);
 	
-	@Query("select m from Medecin m left join fetch m.salle s")
-	List<Medecin> findAllMedecinByIdWithSalle(String salle);
+	@Query("select m from Medecin m left join fetch m.salle s where m.id =?1")
+	List<Medecin> findAllMedecinByIdWithSalle(Long id);
 	
-	@Query("select m from Medecin m left join fetch m.specialites s")
-	List<Medecin> findAllMedecinByIdWithSpecialite(String specialite);
+	@Query("select m from Medecin m left join fetch m.specialites s where m.id =?1")
+	Medecin findMedecinByIdWithSpecialite(Long id);
 	
 	@Query("select m from Medecin m where upper(m.nom) = ?1")
 	List<Medecin> findMedecinByNom(String nom);
